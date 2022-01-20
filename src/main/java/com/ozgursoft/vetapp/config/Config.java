@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 @Component
-public class config {
+public class Config {
 
     @Bean
     public ModelMapper modelMapper(){

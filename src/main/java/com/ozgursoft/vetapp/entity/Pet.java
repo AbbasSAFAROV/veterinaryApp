@@ -1,5 +1,6 @@
 package com.ozgursoft.vetapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class Pet {
     private String description;
     private String age;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL,optional = false)
     private Owner owner;
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="common/header::header">
+</head>
+<body>
+
+
+
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+
+    <div th:replace="common/sidebar::sidebar"></div>
+
+    <!-- Page Content Holder -->
+
+    <div th:replace="common/content::content"></div>
+
+</div>
+
+
+<!-- jQuery CDN -->
+
+<div th:replace="common/footer::footer"></div>
+
+</body>
+</html>
