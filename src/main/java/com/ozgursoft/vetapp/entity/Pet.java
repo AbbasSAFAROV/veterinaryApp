@@ -26,7 +26,7 @@ public class Pet {
     private String age;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL,optional = false)
+    @ManyToOne(fetch = FetchType.LAZY )
     private Owner owner;
 
     public Pet(String name, String type, String genus, String description, String age, Owner owner) {

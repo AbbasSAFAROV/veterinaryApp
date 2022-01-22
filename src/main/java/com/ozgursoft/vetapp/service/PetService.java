@@ -3,9 +3,11 @@ package com.ozgursoft.vetapp.service;
 
 import com.ozgursoft.vetapp.entity.Owner;
 import com.ozgursoft.vetapp.entity.Pet;
+import com.ozgursoft.vetapp.exception.OwnerNotFoundException;
 import com.ozgursoft.vetapp.exception.PetNotFoundException;
 import com.ozgursoft.vetapp.model.dto.PetDto;
 import com.ozgursoft.vetapp.model.request.PetCreateRequest;
+import com.ozgursoft.vetapp.repository.OwnerRepository;
 import com.ozgursoft.vetapp.repository.PetRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -18,12 +20,14 @@ public class PetService {
 
     private final PetRepository petRepository;
     private final OwnerService ownerService;
+    private final OwnerRepository repository;
     private final ModelMapper modelMapper;
 
 
-    public PetService(PetRepository petRepository, OwnerService service, ModelMapper modelMapper) {
+    public PetService(PetRepository petRepository, OwnerService service, OwnerRepository repository, ModelMapper modelMapper) {
         this.petRepository = petRepository;
         this.ownerService = service;
+        this.repository = repository;
         this.modelMapper = modelMapper;
     }
 
@@ -34,12 +38,9 @@ public class PetService {
     }
 
     public PetDto createPet(PetCreateRequest request){
-
         Owner owner = ownerService.findOwnerById(request.getOwnerId());
-        Pet pet = modelMapper.map(request,Pet.class);
-        pet.setOwner(owner);
+        Pet pet = new Pet(request.getName(), request.getType(), request.getGenus(), request.getDescription(), request.getAge(), owner);
         return modelMapper.map(petRepository.save(pet),PetDto.class);
-
     }
 
     public PetDto updatePet(PetCreateRequest request,Long id){

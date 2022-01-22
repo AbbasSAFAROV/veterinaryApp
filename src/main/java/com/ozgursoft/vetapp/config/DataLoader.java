@@ -24,59 +24,22 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Owner abbas = Owner.builder()
-                .nameSurname("Abbas")
-                .email("abbas@mail.com")
-                .phone("05458146542")
-                .contact("izmir")
-                .build();
+        Owner abbas = new Owner("abbas","05459149870","abbas@mail.com","izmir",null);
+        Owner safka = new Owner("safka","05459149871","safka@mail.com","konya",null);
+        Owner qorya = new Owner("qorya","05459149872","qorya@mail.com","ankara",null);
 
-        Owner safka = Owner.builder()
-                .nameSurname("safia")
-                .email("safka@mail.com")
-                .phone("05458146541")
-                .contact("izmir")
-                .build();
+        Pet dog = new Pet("pitbul","americano","dog","iyi huylu","2",abbas);
+        Pet cat = new Pet("pasha","iranian","cat","iyi huylu","2",safka);
+        Pet kush = new Pet("papagan","papagn01","bird","iyi huylu","2",qorya);
+        Pet kush2 = new Pet("papagan2","papagn01","bird","iyi huylu","2",qorya);
 
-
-        Pet dog = Pet.builder()
-                .name("pitbul")
-                .type("Dog")
-                .genus("americano")
-                .age("2")
-                .description("egitimli")
-                .owner(abbas)
-                .build();
-        Pet dog1 = Pet.builder()
-                .name("pitbul1")
-                .type("Dog")
-                .genus("americano")
-                .age("23")
-                .description("egitimli")
-                .owner(abbas)
-                .build();
-
-        Pet cat = Pet.builder()
-                .name("iranian")
-                .type("cat")
-                .genus("i.cat")
-                .age("2")
-                .description("egitimli")
-                .owner(safka)
-                .build();
-        Pet cat1 = Pet.builder()
-                .name("iranian1")
-                .type("cat")
-                .genus("i.cat")
-                .age("21")
-                .description("egitimli")
-                .owner(safka)
-                .build();
-
+        ownerRepository.save(abbas);
+        ownerRepository.save(safka);
+        ownerRepository.save(qorya);
         petRepository.save(dog);
         petRepository.save(cat);
-        petRepository.save(dog1);
-        petRepository.save(cat1);
+        petRepository.save(kush);
+        petRepository.save(kush2);
 
 
 

@@ -1,6 +1,7 @@
 package com.ozgursoft.vetapp.api;
 
 
+import com.ozgursoft.vetapp.entity.Pet;
 import com.ozgursoft.vetapp.model.dto.PetDto;
 import com.ozgursoft.vetapp.model.request.PetCreateRequest;
 import com.ozgursoft.vetapp.service.OwnerService;
@@ -32,9 +33,10 @@ public class PetRestController {
     }
 
     @PostMapping()
-    public ResponseEntity<PetDto> createPet(PetCreateRequest request){
+    public ResponseEntity<PetDto> createPet(@RequestBody PetCreateRequest request){
         return new ResponseEntity<>(petService.createPet(request), HttpStatus.CREATED);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<PetDto> updatePet(@RequestBody PetCreateRequest request,@PathVariable Long id){
