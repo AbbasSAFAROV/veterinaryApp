@@ -2,6 +2,7 @@ package com.ozgursoft.vetapp.controller;
 
 
 import com.ozgursoft.vetapp.model.dto.OwnerDto;
+import com.ozgursoft.vetapp.model.dto.PetDto;
 import com.ozgursoft.vetapp.service.OwnerService;
 import com.ozgursoft.vetapp.service.PetService;
 import org.springframework.stereotype.Controller;
@@ -12,35 +13,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
-@RequestMapping("/owners")
-public class OwnerController {
+@RequestMapping("/pets")
+public class PetController {
 
     private final PetService petService;
     private final OwnerService ownerService;
 
-    public OwnerController(PetService petService, OwnerService ownerService) {
+    public PetController(PetService petService, OwnerService ownerService) {
         this.petService = petService;
         this.ownerService = ownerService;
     }
 
-
     @GetMapping()
-    public String getAllOwners(Model model){
+    public String getAllPets(Model model){
 
-        List<OwnerDto> ownerDtos = ownerService.getAllOwners();
-        model.addAttribute("owners",ownerDtos);
-        return "owners/owners";
-
+        List<PetDto> petDtos = petService.getAllPets();
+        model.addAttribute("pets",petDtos);
+        return "pets/pets";
     }
 
     @GetMapping("/add")
-    public String getOwnerAdPage(){
-        return "owners/addOwner";
+    public String getPetAddPage(Model model){
+        List<OwnerDto> ownerDtos = ownerService.getAllOwners();
+        model.addAttribute("owners",ownerDtos);
+        return "pets/addPet";
     }
 
     @GetMapping("/edit")
-    public String getOwnerEditPage(){
-        return "owners/updateOwner";
+    public String getPetEditPage(){
+        return "pets/updatePet";
     }
 
 

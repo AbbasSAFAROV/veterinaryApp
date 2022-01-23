@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="common/header::header">
+</head>
+<body>
+
+
+
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+
+    <div th:replace="common/sidebar::sidebar"></div>
+
+    <!-- Sidebar End -->
+    <div id="content" >
+        <!-- Navbar start -->
+        <div th:replace="common/navbar::navbar"></div>
+        <!-- Navbar End -->
+
+        <!-- Page Content Holder -->
+
+        <!-- tale start -->
+
+        <div class="container" style="justify-content: center;align-content: center;margin-top: auto">
+
+            <div class="container" style="margin-top: 150px;">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+                </form>
+            </div>
+        </div>
+
+        <!-- table end -->
+    </div>
+    <!-- id content -->
+
+
+</div>
+
+
+<!-- jQuery CDN -->
+
+<div th:replace="common/footer::footer"></div>
+
+</body>
+</html>
+

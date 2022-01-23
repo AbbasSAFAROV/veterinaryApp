@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head th:replace="common/header::header">
+</head>
+<body>
+
+
+
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+
+    <div th:replace="common/sidebar::sidebar"></div>
+
+    <!-- Sidebar End -->
+    <div id="content" >
+        <!-- Navbar start -->
+        <div th:replace="common/navbar::navbar"></div>
+        <!-- Navbar End -->
+
+        <!-- Page Content Holder -->
+
+        <!-- tale start -->
+        <br>
+        <br>
+        <div class="container" style="justify-content: center;align-content: center;margin-top: 70px;">
+            <div class="table-responsive">
+                <table class="table table-hover table-primary">
+                    <thead class="thead-primary">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Contact</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="owner:${owners}">
+                        <th scope="row" th:text="${owner.id}"></th>
+                        <td th:text="${owner.nameSurname}"></td>
+                        <td th:text="${owner.email}"></td>
+                        <td th:text="${owner.phone}"></td>
+                        <td th:text="${owner.contact}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table table-hover table-primary">
+                    <thead class="thead-primary">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Genus</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Owner</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pet:${pets}">
+                        <th scope="row" th:text="${pet.id}"></th>
+                        <td th:text="${pet.name}"></td>
+                        <td th:text="${pet.type}"></td>
+                        <td th:text="${pet.genus}"></td>
+                        <td th:text="${pet.age}"></td>
+                        <td th:text="${pet.ownerId}"></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- table end -->
+    </div>
+    <!-- id content -->
+
+
+</div>
+
+
+<!-- jQuery CDN -->
+
+<div th:replace="common/footer::footer"></div>
+
+</body>
+</html>
