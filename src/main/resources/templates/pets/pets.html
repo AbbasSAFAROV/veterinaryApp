@@ -43,7 +43,19 @@
                         <td th:text="${pet.type}"></td>
                         <td th:text="${pet.genus}"></td>
                         <td th:text="${pet.age}"></td>
-                        <td th:text="${pet.ownerId}"></td>
+                        <td>
+                            <a style="color: #6d7fcc" th:text="${pet.owner.nameSurname}" th:href="@{'/owner/detail/'+${pet.id}}"></a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" th:href="@{'/owner/update/'+${pet.id}}">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" th:href="@{'/owner/delete/'+${pet.getId()}}">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
                         <td></td>
                     </tr>
                     </tbody>

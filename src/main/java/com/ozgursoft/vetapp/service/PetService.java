@@ -37,6 +37,10 @@ public class PetService {
 
     }
 
+    public List<Pet> findAllPets(){
+        return petRepository.findAll();
+    }
+
     public PetDto createPet(PetCreateRequest request){
         Owner owner = ownerService.findOwnerById(request.getOwnerId());
         Pet pet = new Pet(request.getName(), request.getType(), request.getGenus(), request.getDescription(), request.getAge(), owner);

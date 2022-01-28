@@ -2,11 +2,15 @@ package com.ozgursoft.vetapp.controller;
 
 
 import com.ozgursoft.vetapp.model.dto.OwnerDto;
+import com.ozgursoft.vetapp.model.request.OwnerCreateRequest;
+import com.ozgursoft.vetapp.model.request.PetCreateRequest;
 import com.ozgursoft.vetapp.service.OwnerService;
 import com.ozgursoft.vetapp.service.PetService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -23,6 +27,10 @@ public class OwnerController {
         this.ownerService = ownerService;
     }
 
+    @ModelAttribute("owner")
+    public OwnerCreateRequest ownerCreateRequest(){
+        return new OwnerCreateRequest();
+    }
 
     @GetMapping()
     public String getAllOwners(Model model){
@@ -34,8 +42,14 @@ public class OwnerController {
     }
 
     @GetMapping("/add")
-    public String getOwnerAdPage(){
+    public String getOwnerAddPage(){
         return "owners/addOwner";
+    }
+
+    @PostMapping("/add")
+    public String ownerAddPage(@ModelAttribute("owner") OwnerCreateRequest ownerCreateRequest){
+        ownerService.createOwner(ownerCreateRequest);
+        return "redirect:/owners?success";
     }
 
     @GetMapping("/edit")
